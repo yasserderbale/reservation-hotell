@@ -1,0 +1,44 @@
+//end 1200px
+@media screen and (max-width: 1200px) {
+
+    .container {
+        width: calc( 100% - 30px);
+        max-width: 100%;
+        background: transparent;
+    }
+    .booking-content {
+        @include flex-direction(column);
+    }
+    .booking-image, .booking-form {
+        width: 100%;
+    }
+    .booking-image {
+        order: 2;
+        text-align: center;
+    }
+    .booking-form {
+        order: 1;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .booking-img {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        width: 100%;
+    }
+}
+
+//end 575px
+@media screen and (max-width: 480px) {
+    .radio-item {
+        display: block;
+        margin-bottom: 15px;
+        width: 150px;
+    }
+    .active {
+        padding: 7px 1px;
+    }
+    form {
+        padding: 72px 40px 70px 40px;
+    }
+}
