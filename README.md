@@ -10,3 +10,5 @@ npm init install
 ### il faut creear compte
 <img src="https://github.com/yasserderbale/reservation-hotell/assets/164632388/efce9eb5-72fc-49d1-be01-feaab4b4f7bb">
 
+### saisire info de reservations
+<img src="https://github.com/yasserderbale/reservation-hotell/assets/164632388/975d48a8-05a9-4a68-9508-57cf1ad28fe7.png">
