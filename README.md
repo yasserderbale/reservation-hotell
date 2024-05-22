@@ -1,6 +1,34 @@
 #### hotell
+### Installer Node.js (si ce n'est pas déjà fait)
+# Sur les systèmes basés sur Debian/Ubuntu
 ```
-npm init install
+sudo apt-get install nodejs
+```
+### Sur les systèmes basés sur Red Hat/CentOS
+```
+sudo yum install nodejs
+
+```
+### Installer npm (si ce n'est pas déjà fait)
+# Sur les systèmes basés sur Debian/Ubuntu
+```
+sudo apt-get install npm
+
+```
+### Sur les systèmes basés sur Red Hat/CentOS
+```
+sudo yum install npm
+
+```
+### Installer les dépendances du projet
+```
+npm install
+
+```
+# Lancer le projet
+```
+npm start
+
 ```
 <img src="https://github.com/yasserderbale/reservation-hotell/assets/164632388/b89a2695-c8cd-4d52-998a-781554944f2d.png" heigth="65vh" width="70%">
 
