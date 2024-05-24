@@ -13,7 +13,6 @@ router.use(express.static("chambres"));
 router.use(express.urlencoded({ extended: true }));
 router.use(flash());
 const connect = require("../model/model");
-
 router.get("/reservations", (req, res) => {
   const user = req.session.userId;
   if (!req.session.userId) {
@@ -46,7 +45,7 @@ router.post("/reservations", (req, res) => {
             `update chambres set status='reserved' where id='${chambresId}'`,
             (er, re) => {
               if (er) {
-                res.send("eroore de chalgre le status de chambre");
+                res.send("eroore de changre le status de chambre");
               }
             }
           );

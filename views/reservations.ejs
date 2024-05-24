@@ -1,156 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <style>
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-        position: fixed;
-        top: 0;
-        width: 100%;
-      }
-      .navbar a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      .navbar a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-      .navbar a.active {
-        background-color: #4caf50;
-        color: white;
-      }
-    </style>
-    <!-- Font Icon -->
-    <link
-      rel="stylesheet"
-      href="fonts/material-icon/css/material-design-iconic-font.min.css"
-    />
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div class="main">
-      <% if (ee.length>0) { %>
-      <div class="alert alert-danger text-center vali flash-message">
-        <%= ee %>
-      </div>
-      <% } %> <% if (valide.length>0) { %>
-      <div class="alert alert-info text-center vali flash-message">
-        <%= valide%>
-      </div>
-      <% } %>
-      <form action="/logout" method="post" class="logoute">
-        <button type="submit" class="btn btn-danger btn">Logout</button>
-      </form>
-      <a
-        href="/utilisateur"
-        class="btn btn-danger"
-        style="position: absolute; left: -2px; top: 45px"
-        >reservation</a
-      >
-      <div class="container">
-        <div class="booking-content">
-          <div class="booking-image">
-            <img
-              class="booking-img"
-              src="images/arkady-lukashov-ysN7dkne160-unsplash.jpg"
-            />
-          </div>
-          <div class="booking-form">
-            <form action="/reservations" method="post">
-              <h2>Booking Chambre</h2>
-              <div class="form-group form-input">
-                <label>Date Arivee</label>
-                <input type="date" name="date_arrivee" id="name" required />
-              </div>
-              <div class="form-group form-input">
-                <label>Date Departe</label>
-                <input
-                  type="date"
-                  type="number"
-                  name="date_depart"
-                  id="phone"
-                  value=""
-                  required
-                />
-              </div>
-              <div class="form-radio">
-                <label class="label-radio"> Nbr_of_Presonne</label>
-                <div class="radio-item-list">
-                  <span class="radio-item">
-                    <input
-                      type="radio"
-                      name="Nbr_of_Presonne"
-                      value="2"
-                      id="number_people_2"
-                    />
-                    <label for="number_people_2">2</label>
-                  </span>
-                  <span class="radio-item active">
-                    <input
-                      type="radio"
-                      name="Nbr_of_Presonne"
-                      value="4"
-                      id="number_people_4"
-                      checked="checked"
-                    />
-                    <label for="number_people_4">4</label>
-                  </span>
-                  <span class="radio-item">
-                    <input
-                      type="radio"
-                      name="Nbr_of_Presonne"
-                      value="6"
-                      id="number_people_6"
-                    />
-                    <label for="number_people_6">6</label>
-                  </span>
-                  <span class="radio-item">
-                    <input
-                      type="radio"
-                      name="Nbr_of_Presonne"
-                      value="8"
-                      id="number_people_8"
-                    />
-                    <label for="number_people_8">8</label>
-                  </span>
-                  <span class="radio-item">
-                    <input
-                      type="radio"
-                      name="Nbr_of_Presonne"
-                      value="10"
-                      id="number_people_10"
-                    />
-                    <label for="number_people_10">10</label>
-                  </span>
+     <style>
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .navbar a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+    .btn-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .btn-list li {
+      margin: 5px 0;
+    }
+  </style>
+      <!-- Font Icon -->
+      <link
+        rel="stylesheet"
+        href="fonts/material-icon/css/material-design-iconic-font.min.css"
+      />
+      <link rel="stylesheet" href="bootstrap.min.css" />
+      <!-- Main css -->
+      <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+      <div class="main">
+        <% if (ee.length>0) { %>
+        <div class="alert alert-danger text-center vali flash-message">
+          <%= ee %>
+        </div>
+        <% } %> <% if (valide.length>0) { %>
+        <div class="alert alert-info text-center vali flash-message">
+          <%= valide%>
+        </div>
+        <% } %>
+        <form action="/logout" method="post" class="logoute">
+          <button type="submit" class="btn btn-danger btn">Logout</button>
+        </form>
+        <a
+          href="/utilisateur"
+          class="btn btn-danger"
+          style="position: absolute; left: -2px; top: 45px"
+          >reservation</a
+        >
+        <div class="container">
+          <div class="booking-content">
+            <div class="booking-image">
+              <img
+                class="booking-img"
+                src="images/arkady-lukashov-ysN7dkne160-unsplash.jpg"
+              />
+            </div>
+            <div class="booking-form">
+              <form action="/reservations" method="post">
+                <h2>Booking Chambre</h2>
+                <div class="form-group form-input">
+                  <label>Date Arivee</label>
+                  <input type="date" name="date_arrivee" id="name" required />
                 </div>
-              </div>
+                <div class="form-group form-input">
+                  <label>Date Departe</label>
+                  <input
+                    type="date"
+                    type="number"
+                    name="date_depart"
+                    id="phone"
+                    value=""
+                    required
+                  />
+                </div>
+                <div class="form-radio">
+                  <label class="label-radio"> Nbr_of_Presonne</label>
+                  <div class="radio-item-list">
+                    <span class="radio-item">
+                      <input
+                        type="radio"
+                        name="Nbr_of_Presonne"
+                        value="2"
+                        id="number_people_2"
+                      />
+                      <label for="number_people_2">2</label>
+                    </span>
+                    <span class="radio-item active">
+                      <input
+                        type="radio"
+                        name="Nbr_of_Presonne"
+                        value="4"
+                        id="number_people_4"
+                        checked="checked"
+                      />
+                      <label for="number_people_4">4</label>
+                    </span>
+                    <span class="radio-item">
+                      <input
+                        type="radio"
+                        name="Nbr_of_Presonne"
+                        value="6"
+                        id="number_people_6"
+                      />
+                      <label for="number_people_6">6</label>
+                    </span>
+                    <span class="radio-item">
+                      <input
+                        type="radio"
+                        name="Nbr_of_Presonne"
+                        value="8"
+                        id="number_people_8"
+                      />
+                      <label for="number_people_8">8</label>
+                    </span>
+                    <span class="radio-item">
+                      <input
+                        type="radio"
+                        name="Nbr_of_Presonne"
+                        value="10"
+                        id="number_people_10"
+                      />
+                      <label for="number_people_10">10</label>
+                    </span>
+                  </div>
+                </div>
 
-              <div class="form-submit">
-                <button type="submit" value="Book now" class="submit">
-                  Book now
-                </button>
-              </div>
-            </form>
+                <div class="form-submit">
+                  <button type="submit" value="Book now" class="submit">
+                    Book now
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="flache.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </body>
-  <!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="js/main.js"></script>
+      <script src="flache.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      
+    </body>
+    <!-- This templates was made by Colorlib (https://colorlib.com) -->
+  </html>

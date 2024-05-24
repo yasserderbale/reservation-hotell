@@ -9,6 +9,8 @@ const logine = require("./router/logine");
 const visiteur = require("./router/visiteur");
 const reservations = require("./router/reservations");
 const utilisateur = require("./router/resultates");
+const Admine = require("./router/Admine");
+app.use("/", Admine);
 app.use("/", utilisateur);
 app.use("/", logine);
 app.use("/", signup);
