@@ -13,35 +13,36 @@ Description: This Template is created for Youtubers
 * {
   margin: 0px;
   padding: 0px;
-  list-style: none; 
+  list-style: none;
 }
 
-body{
+body {
   font-family: "Open Sans";
 }
 
 img {
-  max-width: 100%; 
+  max-width: 100%;
 }
 
 a {
   text-decoration: none;
   outline: none;
-  color: #444; 
+  color: #444;
 }
 
 a:hover {
-  color: #444; 
+  color: #444;
 }
 
 ul {
   margin-bottom: 0;
-  padding-left: 0; 
+  padding-left: 0;
 }
 
-ol,ul{
-  margin:0px;
-  padding:0px;
+ol,
+ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 a:hover,
@@ -49,162 +50,161 @@ a:focus,
 input,
 textarea {
   text-decoration: none;
-  outline: none; 
+  outline: none;
 }
 
-.form-02-main{
-  background:url(../images/bg-01.jpg);
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-position:center;
-  position:relative;
-  z-index:2;
-  overflow:hidden;
+.form-02-main {
+  background: url(../images/hotellfilter.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
 }
 
-._lk_de{
-  
-  background-repeat:no-repeat;
-  background-size:cover;
-  padding:40px 0px;
-  position:relative;
-
+._lk_de {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px 0px;
+  position: relative;
 }
 
-.form-03-main{
+.form-03-main {
   height: 85.5vh;
-  width:500px;
-  display:block;
-  margin:20px auto;
-  padding:95px 50px 25px;
-  background:rgba(255,255,255,0.6);
-  border-radius:6px;
-  z-index:9;
+  width: 500px;
+  display: block;
+  margin: 20px auto;
+  padding: 95px 50px 25px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  z-index: 9;
 }
 
-.logo{
-  display:block;
-  margin:20px auto;
-  width:100px;
-  height:100px;
+.logo {
+  display: block;
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
 }
 
-.form-group{
-  padding:20px 0px;
-  display:inline-block;
-  width:100%;
-  position:relative;
+.form-group {
+  padding: 20px 0px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
 }
 
-.form-group p{
-  margin:0px;
+.form-group p {
+  margin: 0px;
 }
 
-.form-control{
-  min-height:45px;
+.form-control {
+  min-height: 45px;
   -webkit-box-shadow: none;
   box-shadow: none;
   padding: 10px 15px;
-  border-radius:20px;
-  border:1px solid#2b3990;
+  border-radius: 20px;
+  border: 1px solid#2b3990;
 }
 
-.checkbox{
-  display:flex;
-  justify-content:space-around;
+.checkbox {
+  display: flex;
+  justify-content: space-around;
 }
 
 ._btn_04 {
-    display: inline-block;
-    width: 100%;
-    padding: 12px 0px;
-    background: #2b3990;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
+  display: inline-block;
+  width: 100%;
+  padding: 12px 0px;
+  background: #2b3990;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
 }
 
-._btn_04 a{
-  font-size:15px;
-  color:#fff;
+._btn_04 a {
+  font-size: 15px;
+  color: #fff;
 }
 
-._social_04{
-  display:block;
-  width:100%;
-  padding:15px 0px;
-  text-align:center; 
+._social_04 {
+  display: block;
+  width: 100%;
+  padding: 15px 0px;
+  text-align: center;
 }
 
-._social_04 ol li{
-  display:inline-block;
-  width:40px;
-  height:40px;
-  text-align:center;
-  line-height:40px;
-  transition:0.2s;
-  background:#fff;
-  border-radius:50px;
-  border:1px solid#2b3990;
-  margin:0 0 0 10px;
-  transition:0.2s;
+._social_04 ol li {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  transition: 0.2s;
+  background: #fff;
+  border-radius: 50px;
+  border: 1px solid#2b3990;
+  margin: 0 0 0 10px;
+  transition: 0.2s;
 }
 
-._social_04 ol li:nth-child(1):hover{
-  background:#3b5998;
-  border:1px solid#3b5998;
-  color:#fff;
-  transition:0.2s;
+._social_04 ol li:nth-child(1):hover {
+  background: #3b5998;
+  border: 1px solid#3b5998;
+  color: #fff;
+  transition: 0.2s;
 }
 
-._social_04 ol li:nth-child(2):hover{
-  background:#00aced;
-  border:1px solid#00aced;
-  color:#fff;
-  transition:0.2s;
+._social_04 ol li:nth-child(2):hover {
+  background: #00aced;
+  border: 1px solid#00aced;
+  color: #fff;
+  transition: 0.2s;
 }
 
-._social_04 ol li:nth-child(3):hover{
-  background:#c32f10;
-  border:1px solid#c32f10;
-  color:#fff;
-  transition:0.2s;
+._social_04 ol li:nth-child(3):hover {
+  background: #c32f10;
+  border: 1px solid#c32f10;
+  color: #fff;
+  transition: 0.2s;
 }
 
-._social_04 ol li:nth-child(4):hover{
-  background:#E1306C;
-  border:1px solid#E1306C;
-  color:#fff;
-  transition:0.2s;
+._social_04 ol li:nth-child(4):hover {
+  background: #e1306c;
+  border: 1px solid#E1306C;
+  color: #fff;
+  transition: 0.2s;
 }
 
-._social_04 ol li:nth-child(5):hover{
-  background:#0177b5;
-  border:1px solid#0177b5;
-  color:#fff;
-  transition:0.2s;
+._social_04 ol li:nth-child(5):hover {
+  background: #0177b5;
+  border: 1px solid#0177b5;
+  color: #fff;
+  transition: 0.2s;
 }
 
-._social_04 ol li:hover,._social_04 ol li:hover i{
-  color:#fff;
+._social_04 ol li:hover,
+._social_04 ol li:hover i {
+  color: #fff;
 }
 
-._social_04 ol li i:nth-child(1):hover{
-  color:#fff;
+._social_04 ol li i:nth-child(1):hover {
+  color: #fff;
 }
 
-._social_04 ol li i{
-  font-size:15px;
-  color:#2b3990;
+._social_04 ol li i {
+  font-size: 15px;
+  color: #2b3990;
 }
 
-.nm_lk{
-  text-align:center;
+.nm_lk {
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
-  .form-03-main{
+  .form-03-main {
     width: 100%;
   }
 }

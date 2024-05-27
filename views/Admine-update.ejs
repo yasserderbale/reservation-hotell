@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+    /* CSS pour le bouton Logout */
+.logout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #fff;
+    font: inherit;
+    text-decoration: none; /* Ajout d'une soulignement pour indiquer que c'est un lien */
+}
+
+/* CSS pour styliser le bouton au survol */
+.logout-button:hover {
+    text-decoration: none; /* Supprimer le soulignement au survol */
+}
+
+    /* CSS pour fixer la largeur et la hauteur du corps lorsque le menu est affiché */
+.body-fixed {
+    width: 100vw; /* 100% de la largeur de la fenêtre */
+    height: 100vh; /* 100% de la hauteur de la fenêtre */
+    overflow: hidden; /* Masquer les débordements pour empêcher le défilement */
+}
+
+    /*-----Background-----*/
+    /* CSS pour positionner le formulaire de manière fixe */
+
+
+    body {
+        background-image: url(https://s3.envato.com/files/243754334/primag.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+        overflow: auto;
+        display: flex; /* Utilisation de flexbox */
+        justify-content: center; /* Centrer horizontalement */
+        align-items: center; /* Centrer verticalement */
+    }
+
+    /*-----for border----*/
+    .container {
+        font-family: Roboto, sans-serif;
+        background-image: url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg);
+        border-style: 1px solid grey;
+        text-align: center;
+        opacity: 0.8;
+        box-shadow: 2px 5px 5px 0px #eee;
+        max-width: 500px;
+        padding-top: 10px;
+        height: 363px;
+    }
+
+    /*---for heading-----*/
+    .heading {
+        text-decoration: bold;
+        text-align: center;
+        font-size: 30px;
+        color: #F96;
+        padding-top: 10px;
+    }
+
+    /*-------for Name of Chamber----------*/
+    .chamber-name {
+        margin-left: 1px;
+        font-family: sans-serif;
+        font-size: 14px;
+        color: white;
+        margin-top: 10px;
+    }
+
+    /*-----------for Price--------*/
+    .price {
+        margin-left: 44px;
+        font-family: sans-serif;
+        color: white;
+        font-size: 14px;
+        margin-top: 13px;
+    }
+
+    /*-------for Image of Chamber----------*/
+    .image {
+        color: white;
+        margin-top: 9px;
+        font-size: 14px;
+        font-family: sans-serif;
+        margin-left: 6px;
+        margin-top: 9px;
+    }
+
+    /*------------For submit button---------*/
+    .sbutton {
+        color: white;
+        font-size: 20px;
+        border: 1px solid white;
+        background-color: #080808;
+        width: 32%;
+        margin-left: 41%;
+        margin-top: 16px;
+        box-shadow: 0px 2px 2px 0px white;
+    }
+
+    .btn.btn-warning:hover {
+        box-shadow: 2px 1px 2px 3px #99ccff;
+        background: #5900a6;
+        color: #fff;
+        transition: background-color 1.15s ease-in-out, border-color 1.15s ease-in-out, box-shadow 1.15s ease-in-out;
+    }
+
+    /*--- Menu Sidebar ---*/
+    #sidebar {
+        display: none;
+        background-color: #333; /* Couleur de fond */
+        position: fixed; /* Fixe la position */
+        top: 0; /* Position en haut */
+        left: 0; /* Position à gauche */
+        height: 100%; /* Hauteur égale à la hauteur de la fenêtre */
+        width: 250px; /* Largeur fixe */
+        padding-top: 60px; /* Espacement en haut pour éviter le chevauchement avec le bouton */
+    }
+
+    #sidebar ul {
+        list-style-type: none; /* Supprime les puces */
+        padding: 0;
+    }
+
+    #sidebar ul li {
+        padding: 8px;
+        border-bottom: 1px solid #555; /* Bordure basse */
+    }
+
+    #sidebar ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    #sidebar ul li a:hover {
+        color: #fff;
+        background-color: #555; /* Couleur de fond au survol */
+    }
+
+    .show-sidebar #sidebar {
+        display: block; /* Affiche le menu */
+    }
+
+    /*--- Content Shift ---*/
+    .shift-content {
+        margin-left: 250px; /* Décale le contenu vers la droite */
+    }
+
+    /*--- Bouton du Menu Sidebar ---*/
+    #toggleSidebarButton {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+    }
+    /* CSS pour ajuster la position du contenu lorsque le menu est affiché */
+.shift-content .container {
+    margin-left: 250px;
+}
+
+</style>
+<body>
+<!-- Menu Sidebar Button -->
+
+<div class="container">
+    <!---heading---->
+    <header class="heading">Chambre-Form</header><hr></hr>
+    <!---Form starting---->
+    <form  class="row" method="post" action="/Admine-update">
+        <!--- For Name of Chamber---->
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="chamber-name">Nom de la Chambre</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" value="<%= result2[0].name %>" name="chamber" id="chamberName" placeholder="Entrez le nom de la chambre" class="form-control" >
+                </div>
+            </div>
+        </div>
+
+        <!--- For Price---->
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="price">Prix</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="number" value="<%= result2[0].prix %>" name="prix" id="price" placeholder="Entrez le prix" class="form-control" >
+                </div>
+            </div>
+        </div>
+
+        <!--- For Image of Chamber---->
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="image">Image Chambre</label>
+                </div>
+                <div class="col-xs-8">
+<input type="file" name="image" id="chamberImage" class="form-control" onchange="previewImage(this)">
+<img id="image-preview" src="<%= result2[0].image_url %>" width="32%" height="105vh" alt="Preview">
+        </div>
+        <input type="hidden" name="chambreId" value="<%= result2[0].id %>" id="">
+        <!--- Submit Button---->
+        <div class="col-sm-12">
+            <div class="row">
+                <button type="submit" class="btn btn-warning sbutton">Soumettre</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Menu Sidebar -->
+
+
+<script>
+  function previewImage(input) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('image-preview').src = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      document.getElementById('image-preview').src = "<%= result2[0].image_url %>";
+    }
+  }
+</script>
+
+</body>
+</html>

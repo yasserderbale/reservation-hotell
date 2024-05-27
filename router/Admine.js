@@ -22,11 +22,24 @@ router.get("/Admine-reservation", (req, res) => {
         res.render("Admine-reserve", { result1: result });
       }
     });
+  } else {
+    res.redirect("/Admine-logine");
   }
-  else{res.redirect("/Admine-logine")}
+});
+router.get("/Admine-update:id", (req, res) => {
+  const Chambreid = req.params.id;
+  const reuqute = `select * from chambres where id='${Chambreid}'`;
+  if (req.session.AdminId) {
+    connecte.query(reuqute, (eroore, result) => {
+      if (!eroore) {
+        res.render("Admine-update", { result2: result });
+      }
+    });
+  } else {
+    res.redirect("/Admine-logine");
+  }
 });
 router.get("/Admine-chambres", (req, res) => {
-  console.log(req.session.AdminId);
   const reuqute = `select * from chambres`;
   if (req.session.AdminId) {
     connecte.query(reuqute, (eroore, result) => {
@@ -83,5 +96,31 @@ router.post("/Admine-chambres", (req, res) => {
 router.post("/Admine-logout", (req, res) => {
   req.session.destroy();
   res.redirect("Admine-logine");
+});
+router.post("/Admine-annulerchambres", (req, res) => {
+  const annuler = req.body.annuler;
+  const reuqute = `delete from chambres where id='${annuler}'`;
+  connecte.query(reuqute, (eroore, result) => {
+    if (eroore) {
+      console.log("eroore de recuperation des donnes", eroore);
+    }
+  });
+  res.redirect("/Admine-chambres");
+});
+router.post("/Admine-update", (req, res) => {
+  const chambreID = req.body.chambreId;
+  const chamber = req.body.chamber;
+  const prix = req.body.prix;
+  const image = req.body.image;
+  const reuqute = `update chambres set name='${chamber}',prix='${prix}',image_url='${image}' where id='${chambreID}'`;
+  connecte.query(reuqute, (eroore, result2) => {
+    if (eroore) {
+      throw eroore;
+      console.log("pas modifier");
+    } else {
+      console.log(result2);
+    }
+  });
+  res.redirect("/Admine-chambres");
 });
 module.exports = router;
