@@ -14,10 +14,10 @@
         <a class="URL" href="">homme</a>
         <a class="URL" href="">Destination</a>
         <a class="URL" href="">Service</a>
-        <a class="URL" href="">Aboute</a>
-        <a class="URL" href="">Contente</a>
-        <a class="URL" href="/logine">logine</a>
-        <a class="logo">Hotell</a>
+        <a class="URL" href="">A propse</a>
+        <a class="URL" href="">Contenu</a>
+        <a class="URL" href="/logine">connexion</a>
+        <a class="logo">Hôtel</a>
      </nav>
     <img class="image"  src="/about_1.jpg" width="100%" height="822vh">
      <p class="p">Trouvez l'hôtel de vos rêves dès aujourd'hui</p>
@@ -26,9 +26,9 @@
         <input  placeholder="Date Arrivale" class="form-control control" type="date"></div>
       <div><label class="form-label label1">Date Departe</label>
         <input  placeholder="Date Departe" class="form-control control" type="date"></div>
-      <div><label class="form-label label2">Nbr of Presonne</label>
+      <div><label class="form-label label2">Nbr De Presonne</label>
         <input type="number" class="form-control control1"> </div>
-      <button class=" btn1">Find now</button>
+      <button class=" btn1">Trouve maintenant</button>
     </form>
     <div >
       <div class="tree"><hr class="hr1"><p class="pp">Les Chambres Disponibles</p><hr  class="hr1"></div>
@@ -43,23 +43,22 @@
                   <h5 class="card-title"><%= result.name%></h5>
                   <p class="card-text">prix <%= result.prix%>$</p>
                   <div class="">
-                    <h6 class="card-title">Featers</h6>
-                  <div class="d-flex gap-2"><p>2 Rooms</p>
+                    <h6 class="card-title">Caractestiques</h6>
+                  <div class="d-flex gap-1"><p>2Chambre</p>
                   <p>1Bearthday</p>
                   <p>1Balacony</p>
-                  <p>3Sofa</p></div>
+                  <p>3Canape</p></div>
                   </div>
                   <div class="">
                     <h6 class="card-title">Faclites</h6>
                   <div class="d-flex gap-2"><p>2 wifi</p>
                   <p>television</p>
-                  <p>AC</p>
-                  <p>Room heater</p></div>
+                  <p>Chambre heater</p></div>
                   </div>
                    <div class="d-flex mb1">
                               </div>
                   <div class="">
-                    <h6 class="card-title ">Rating</h6>
+                    <h6 class="card-title ">Notation</h6>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                       <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -74,7 +73,7 @@
                     <% if (result.status=='Disponible') { %>
                      <form action="/select-chambre" method="post">
                       <input type="hidden" name="chambresId" value="<%= result.id %>" >
-                      <button type="submit" class="btn btn-outline-success">Book Now</button>
+                      <button type="submit" class="btn btn-outline-success">Reserver</button>
                     </form>
                     <% } %>
                     <div class="d-flex gap-2 align-items-center" ><h6 class="mt-2">statu:</h6><%= result.status %></div>
