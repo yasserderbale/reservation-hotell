@@ -52,12 +52,15 @@ router.get("/Admine-chambres", (req, res) => {
   }
 });
 router.get("/Admine-logine", (req, res) => {
-  res.render("Admine-logine", { erooore: req.flash("eroore") });
+  res.render("Admine-logine", {
+    erooore: req.flash("eroore"),
+    admineerore: req.flash("Admineeroore"),
+  });
 });
 router.get("/Admine", (req, res) => {
   req.flash("eroore", "Il Faut Connecter");
   if (req.session.AdminId) {
-    res.render("Admine");
+    res.render("Admine", { admine: req.flash("Admine") });
   } else {
     res.redirect("/Admine-logine");
   }
@@ -72,7 +75,7 @@ router.post("/Admine-logine", (req, res) => {
         req.session.AdminId = result[0].id;
         res.redirect("/Admine");
       } else {
-        console.log("emaile ou passworde est incorecte");
+        req.flash("Admineeroore", "Emaile ou Passworde est incorecte");
         res.redirect("/Admine-logine");
       }
     } else {
@@ -89,9 +92,10 @@ router.post("/Admine-chambres", (req, res) => {
     if (eroore) {
       console.log(eroore);
     } else {
+      req.flash("Admine", "l`insertion est valide");
+      res.redirect("/Admine");
     }
   });
-  res.redirect("/Admine");
 });
 router.post("/Admine-logout", (req, res) => {
   req.session.destroy();
@@ -111,11 +115,16 @@ router.post("/Admine-update", (req, res) => {
   const chambreID = req.body.chambreId;
   const chamber = req.body.chamber;
   const prix = req.body.prix;
-  const image = req.body.image;
+  var image;
+  if (req.body.image) {
+    image = req.body.image;
+  } else {
+    image = req.body.imgexiste;
+  }
+
   const reuqute = `update chambres set name='${chamber}',prix='${prix}',image_url='${image}' where id='${chambreID}'`;
   connecte.query(reuqute, (eroore, result2) => {
     if (eroore) {
-      throw eroore;
       console.log("pas modifier");
     } else {
       console.log(result2);

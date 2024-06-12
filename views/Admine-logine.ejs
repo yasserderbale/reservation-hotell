@@ -13,7 +13,12 @@
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
   <body>
-    <% if (erooore.length>0) { %>
+    <% if (admineerore.length>0) { %>
+    <div class="alert alert-danger text-center vali flash-message">
+      <%= admineerore %>
+    </div>
+
+    <% } %> <% if (erooore.length>0) { %>
     <div class="alert alert-danger text-center vali flash-message">
       <%= erooore %> <% } %>
     </div>

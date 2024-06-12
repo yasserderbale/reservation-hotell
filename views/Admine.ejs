@@ -41,11 +41,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        height: 100vh;
         overflow: auto;
-        display: flex; /* Utilisation de flexbox */
-        justify-content: center; /* Centrer horizontalement */
-        align-items: center; /* Centrer verticalement */
     }
 
     /*-----for border----*/
@@ -59,6 +55,7 @@
         max-width: 500px;
         padding-top: 10px;
         height: 363px;
+        margin-top: 215px;
     }
 
     /*---for heading-----*/
@@ -171,7 +168,10 @@
 }
 
 </style>
-<body>
+<body >
+    <% if (admine.length>0) { %>
+     <div style="width: 20%; margin-left: 40%;" class="alert alert-info text-center vali flash-message "><%= admine %></div>
+    <% } %>
    
 <!-- Menu Sidebar Button -->
 <button id="toggleSidebarButton" style="margin: -20px -21px;" class="btn btn-primary">Afficher le Menu</button>
@@ -258,7 +258,7 @@
         });
     });
 </script>
-
+<script src="flache.js"></script>
 
 </body>
 </html>

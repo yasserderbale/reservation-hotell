@@ -176,7 +176,7 @@
 
 <div class="container">
     <!---heading---->
-    <header class="heading">Chambre-Form</header><hr></hr>
+    <header class="heading">Chambre-Form</header><hr></hr>  
     <!---Form starting---->
     <form  class="row" method="post" action="/Admine-update">
         <!--- For Name of Chamber---->
@@ -210,8 +210,8 @@
                     <label class="image">Image Chambre</label>
                 </div>
                 <div class="col-xs-8">
-<input type="file" name="image" id="chamberImage" class="form-control" onchange="previewImage(this)">
-<img id="image-preview" src="<%= result2[0].image_url %>" width="32%" height="105vh" alt="Preview">
+           <input  type="hidden" value="<%= result2[0].image_url %>" name="imgexiste" id="">
+          <input type="file" name="image" id="chamberImage" class="form-control" >
         </div>
         <input type="hidden" name="chambreId" value="<%= result2[0].id %>" id="">
         <!--- Submit Button---->
@@ -226,19 +226,7 @@
 <!-- Menu Sidebar -->
 
 
-<script>
-  function previewImage(input) {
-    if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('image-preview').src = e.target.result;
-      }
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      document.getElementById('image-preview').src = "<%= result2[0].image_url %>";
-    }
-  }
-</script>
+
 
 </body>
 </html>
