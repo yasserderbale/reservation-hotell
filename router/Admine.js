@@ -44,7 +44,10 @@ router.get("/Admine-chambres", (req, res) => {
   if (req.session.AdminId) {
     connecte.query(reuqute, (eroore, result) => {
       if (!eroore) {
-        res.render("Admine-chambre", { result: result });
+        res.render("Admine-chambre", {
+          result: result,
+          suprimerchamb: req.flash("suprrimer"),
+        });
       }
     });
   } else {
@@ -107,9 +110,11 @@ router.post("/Admine-annulerchambres", (req, res) => {
   connecte.query(reuqute, (eroore, result) => {
     if (eroore) {
       console.log("eroore de recuperation des donnes", eroore);
+    } else {
+      req.flash("suprrimer", "suprresion valide");
+      res.redirect("/Admine-chambres");
     }
   });
-  res.redirect("/Admine-chambres");
 });
 router.post("/Admine-update", (req, res) => {
   const chambreID = req.body.chambreId;

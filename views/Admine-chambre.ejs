@@ -90,7 +90,15 @@
     <header class="animate__animated animate__fadeInDown">
       <h1>Bienvenue sur notre Page Chambres</h1>
     </header>
+    <% if (suprimerchamb.length>0) { %>
+    <div
+      style="width: 20%; margin-left: 40%"
+      class="alert alert-info text-center vali flash-message"
+    >
+      <%= suprimerchamb %>
+    </div>
 
+    <% } %>
     <div class="container animate__animated animate__fadeIn">
       <h2>Liste des Chambres</h2>
       <table
@@ -120,7 +128,7 @@
                 <input type="hidden" name="annuler" value="<%= result.id%>" />
                 <button type="submit" class="btn btn-annuler">Annuler</button>
               </form>
-              <a  href="/Admine-update<%= result.id %>" class="btn btn-annuler1"
+              <a href="/Admine-update<%= result.id %>" class="btn btn-annuler1"
                 >update</a
               >
             </td>
@@ -135,7 +143,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="flache.js"></script>
     <script>
       // Fonction pour déclencher les animations lorsqu'un élément entre en vue
       function animateOnScroll() {
