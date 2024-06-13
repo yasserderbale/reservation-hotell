@@ -41,14 +41,6 @@ router.post("/reservations", (req, res) => {
           res.redirect("/reservations");
         } else {
           req.flash("valide", "votre reservation a etes enregistrer ");
-          connect.query(
-            `update chambres set status='reserved' where id='${chambresId}'`,
-            (er, re) => {
-              if (er) {
-                res.send("eroore de changre le status de chambre");
-              }
-            }
-          );
           res.redirect("/reservations");
         }
       }
@@ -58,4 +50,34 @@ router.post("/reservations", (req, res) => {
     res.redirect("/reservations");
   }
 });
+
+router.get('/reserved-dates',(req,res)=>{
+    const chambresId = req.session.chambresId;
+if(chambresId){
+  const query = `SELECT date_arrivee, date_depart FROM reservations WHERE chambre_id = ?`;
+  connect.query(query, [chambresId], (error, results) => {
+    if (error) {
+      return res
+        .status(500)
+        .send("Erreur lors de la récupération des dates réservées.");
+    }
+    const reservedDates = [];
+    results.forEach((row) => {
+      const currentDate = new Date(row.date_arrivee);
+      const endDate = new Date(row.date_depart);
+      while (currentDate <= endDate) {
+        reservedDates.push(currentDate.toISOString().split("T")[0]);
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+    });
+    res.json(reservedDates);
+  });
+}
+else{
+  res.send("erore de recuperation de id chambres")
+}
+});
+
+
+
 module.exports = router;
