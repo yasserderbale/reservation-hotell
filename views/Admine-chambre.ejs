@@ -21,66 +21,54 @@
     />
 
     <style>
-      /* Custom CSS */
-      /* Styling for the header */
       .btn-annuler {
         color: #fff;
         background-color: #dc3545;
         border-color: #dc3545;
-        transition: all 0.3s ease; /* Transition douce pour le survol */
+        transition: all 0.3s ease;
       }
       .btn-annuler:hover {
         background-color: #c82333;
         border-color: #bd2130;
-        transform: scale(1.05); /* Légère augmentation de taille au survol */
+        transform: scale(1.05);
       }
       .btn-annuler1 {
         margin-top: 12px;
         color: #fff;
         background-color: #042beed2;
         border-color: #042beed2;
-        transition: all 0.3s ease; /* Transition douce pour le survol */
+        transition: all 0.3s ease;
       }
       .btn-annuler1:hover {
         background-color: #042beed2;
         border-color: #042beed2;
-        transform: scale(1.05); /* Légère augmentation de taille au survol */
+        transform: scale(1.05);
       }
       header {
-        background-color: #4caf50; /* Couleur de fond verte */
+        background-color: #4caf50;
         color: #fff;
         padding: 20px 0;
         text-align: center;
-        margin-bottom: 30px; /* Marge inférieure pour séparer le titre du reste du contenu */
+        margin-bottom: 30px;
       }
-
-      /* Styling for the Navbar */
       .navbar {
-        background-color: #333; /* Couleur de fond du Navbar */
+        background-color: #333;
       }
-
       .navbar-brand {
-        color: #fff !important; /* Couleur du texte du titre de la Navbar */
-        font-size: 24px; /* Taille de police du titre */
+        color: #fff !important;
+        font-size: 24px;
       }
-
-      /* Styling for the main content */
       body {
-        background-color: #f2f2f200; /* Couleur de fond du corps */
-        color: #333; /* Couleur du texte principal */
+        background-color: #f2f2f200;
+        color: #333;
       }
-
-      /* Styling for the reservation table */
       #reservationTable th {
-        background-color: #4caf50; /* Couleur de fond de l'en-tête de la table */
-        color: #fff; /* Couleur du texte de l'en-tête de la table */
+        background-color: #4caf50;
+        color: #fff;
       }
-
       #reservationTable tbody tr:hover {
-        background-color: #ddd; /* Couleur de fond lors du survol sur une ligne */
+        background-color: #ddd;
       }
-
-      /* Centrer le titre */
       h1 {
         text-align: center;
       }
@@ -90,14 +78,13 @@
     <header class="animate__animated animate__fadeInDown">
       <h1>Bienvenue sur notre Page Chambres</h1>
     </header>
-    <% if (suprimerchamb.length>0) { %>
+    <% if (suprimerchamb.length > 0) { %>
     <div
       style="width: 20%; margin-left: 40%"
       class="alert alert-info text-center vali flash-message"
     >
       <%= suprimerchamb %>
     </div>
-
     <% } %>
     <div class="container animate__animated animate__fadeIn">
       <h2>Liste des Chambres</h2>
@@ -109,9 +96,9 @@
           <tr>
             <th>Id</th>
             <th>Nom</th>
-            <th>image</th>
+            <th>Image</th>
             <th>Prix</th>
-            <th>status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -120,39 +107,60 @@
             <td><%= result.id %></td>
             <td><%= result.name %></td>
             <td>
-              <img src="<%= result.image_url %> " width="32%" height="105vh" />
+              <img src="<%= result.image_url %>" width="32%" height="105vh" />
             </td>
             <td><%= result.prix %>$</td>
             <td>
-              <form action="/Admine-annulerchambres" method="post">
-                <input type="hidden" name="annuler" value="<%= result.id%>" />
-                <button type="submit" class="btn btn-annuler">supprimer</button>
+              <form
+                action="/Admine-annulerchambres"
+                method="post"
+                class="delete-form"
+              >
+                <input type="hidden" name="annuler" value="<%= result.id %>" />
+                <button type="button" class="btn btn-annuler delete-btn">
+                  Supprimer
+                </button>
               </form>
               <a href="/Admine-update<%= result.id %>" class="btn btn-annuler1"
                 >Modifier</a
               >
             </td>
           </tr>
-
           <% }) %>
         </tbody>
       </table>
     </div>
 
     <!-- Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="flache.js"></script>
+
     <script>
+      $(document).ready(function () {
+        // Ajouter un événement click à tous les boutons de suppression
+        $(".delete-btn").on("click", function (e) {
+          // Empêcher l'envoi immédiat du formulaire
+          e.preventDefault();
+          // Demander confirmation
+          var confirmation = confirm(
+            "Êtes-vous sûr de vouloir supprimer cette chambre ?"
+          );
+          // Si confirmé, soumettre le formulaire
+          if (confirmation) {
+            $(this).closest("form").submit();
+          }
+        });
+      });
+
       // Fonction pour déclencher les animations lorsqu'un élément entre en vue
       function animateOnScroll() {
         var elements = document.querySelectorAll(".animate__animated");
         elements.forEach(function (element) {
-          var animation = element.dataset.animation || "fadeIn"; // Animation par défaut
-          var offset = element.dataset.offset || "50"; // Offset de déclenchement
+          var animation = element.dataset.animation || "fadeIn";
+          var offset = element.dataset.offset || "50";
 
-          // Fonction pour vérifier si l'élément est visible à l'écran
           function isElementInViewport(el) {
             var rect = el.getBoundingClientRect();
             return (
@@ -166,7 +174,6 @@
             );
           }
 
-          // Fonction pour déclencher l'animation lorsque l'élément entre en vue
           function checkAnimation() {
             if (isElementInViewport(element)) {
               element.classList.add("animate__" + animation);
@@ -175,13 +182,11 @@
             }
           }
 
-          // Vérifier l'animation lorsque la page est chargée et défile
           window.addEventListener("load", checkAnimation);
           window.addEventListener("scroll", checkAnimation);
         });
       }
 
-      // Appeler la fonction pour déclencher les animations sur le scroll
       animateOnScroll();
     </script>
   </body>
