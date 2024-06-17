@@ -33,6 +33,7 @@ sudo yum install npm
 npm install
 
 ```
+# il faut importer BDD qui nome sql(2) sinon le proget ne marche pas
 # Lancer le projet
 ```
 npm start
