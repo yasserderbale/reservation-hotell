@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (user.length>0) { %>
+    <div class="alert alert-danger text-center vali flash-message"><%= user %></div>
+    <% } %> <% if (valid.length>0) { %>
+    <div class="alert alert-info text-center vali flash-message"><%= valid %></div>
+    <% } %> <% if (error.length>0) { %>
+    <div class="alert alert-danger text-center vali flash-message"><%= error %></div>
+    <% } %> <% if (err.length>0) { %>
+    <div class="alert alert-danger text-center vali flash-message"><%= err %></div>
+    <% } %> <% if (errore.length>0) { %>
+    <div class="alert alert-danger text-center vali flash-message"><%= errore %></div>
+    <% } %>
+
+    <section class="h-100 gradient-form" style="background-color: #eee">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-5 mx-md-4">
+                    <div class="text-center">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                        style="width: 185px"
+                        alt="logo"
+                      />
+                      <h4 class="mt-1 mb-5 pb-1">Hotel</h4>
+                    </div>
+
+                    <form action="/logine" method="post">
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example11"
+                          >Emaile</label
+                        >
+
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="Emaile"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example22"
+                          >Mot De Passe</label
+                        >
+
+                        <input
+                          type="password"
+                          class="form-control"
+                          name="passworde"
+                          required
+                        />
+                      </div>
+
+                      <div class="text-center pt-1 mb-5 pb-1">
+                        <button
+                          class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-9"
+                        >
+                          Connecter
+                        </button>
+                      </div>
+
+                      <div class="container text-center">
+                        <p class="text-secondary">
+                          Tu n`a pas un compte?
+                          <a
+                            class="btn btn-sm btn-outline-secondary"
+                            href="/signup"
+                            >S`inscrire</a
+                          >
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 d-flex align-items-center gradient-custom-2"
+                >
+                  <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                    <h4 class="mb-4">Nous sommes plus qu'une simple entreprise</h4>
+                    <p class="small mb-0">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="bootstrap.min.js"></script>
+   <script src="flache.js"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  
+</script>
+  </body>
+</html>

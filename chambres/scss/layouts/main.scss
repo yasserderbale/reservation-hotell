@@ -1,0 +1,222 @@
+@mixin hideInput {width: 0; height: 0; position: absolute; left: -9999px;}
+@mixin focusOutline {outline: dotted 1px #CCC; outline-offset: .45rem;}
+.booking-content {
+    @extend display-flex;
+    @include flex-wrap(wrap);
+}
+.booking-image {
+    width: 58.33%;
+    margin-bottom: -8px;
+}
+.booking-img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.booking-form {
+    width: 41.67%;
+    background: #111;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.form-radio {
+    // margin: 0 -5px;
+    margin-bottom: 65px;
+    padding-top: 20px;
+    input {
+        @include hideInput;
+        // padding: 0 5px;
+    }
+
+    label {
+        padding-top: 4px;
+    }
+	input + label {
+        margin: 0 3px;
+
+        box-sizing: border-box;
+		position: relative; display: inline-block;
+        border: solid 2px #ebebeb; 
+        background-color: #FFF;
+        font-size: 14px; 
+        font-weight: 600; 
+        color: #888;
+        text-align: center;
+		transition: 	border-color .15s ease-out, 
+					color .25s ease-out, 
+					background-color .15s ease-out,
+                    box-shadow .15s ease-out;
+        width: 36px;
+        height: 36px;
+        @include border-radius(50%);
+        
+    }
+	input:checked + label {
+		background-color: #111;
+		color: #FFF;
+		border-color: #111;
+        z-index: 1;
+    }
+    input:focus + label {
+        outline: none;
+    }
+    input:hover {
+		background-color: #111;
+		color: #FFF;
+		border-color: #111;
+    }
+}
+.radio-item-list {
+    margin: 0 -3px;
+}
+.active {
+    position: relative;
+    background: $yellow-color;
+    padding: 14px 1px;
+    margin-right: 7px;
+    margin-left: 3px;
+    @include border-radius(24px);
+    &:after {
+        position: absolute;
+        content: 'Person';
+        right: 17px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        font-size: 11px;
+        color: $black-color;
+        font-weight: bold;
+    }
+    input + label {
+        margin-right: 59px;
+    }
+}
+form {
+    padding: 72px 70px 70px 70px;
+}
+.form-group {
+    margin-bottom: 10px;
+    position: relative;
+}
+.form-input {
+    padding-top: 21px;
+}
+.form-label {
+    position: absolute;
+    @include transition(.25s ease);
+    color: $grey-light;
+    left: 0;
+    top: 23px;
+}
+input {
+    @include transition(.3s ease);
+    padding-top: 10px;
+    -webkit-appearance: none;
+     &:focus + .form-label,  &:valid + .form-label{
+        top: 1px;
+        font-size: 11px;
+        color: $yellow-color;
+    }
+}
+input, select {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    border: none;
+    font-family: Poppins;
+    color: #fff;
+    background: transparent;
+    border-bottom: 1px solid #999;
+    padding: 4px 0;
+    &:focus {
+        border-bottom: 1px solid $yellow-color;
+    }
+
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px transparent inset;
+}   
+
+input {
+    @include input-placeholder($grey-light);
+}
+
+.submit {
+    width: auto;
+    background: $yellow-color;
+    color: #fff;
+    padding: 15px 43px;
+    font-weight: bold;
+    border: none;
+    @include border-radius(5px);
+    cursor: pointer;
+    &:hover {
+        background: darken($yellow-color, 10%);
+    }
+}
+ul { 
+    @extend list-type-ulli;
+    background: 0 0;
+    z-index: 9;
+    border-bottom: 1px solid #999;
+    padding-top: 15px;
+}
+ul li { 
+    padding: 5px 0px; 
+    z-index: 2;
+    color: $grey-light;
+}
+ul li:not(.init) { 
+    display: none; 
+    background: #fff;
+    color: $black-color;
+    padding: 5px 10px; 
+}
+ul li:not(.init):hover, ul li.selected:not(.init) { 
+    background: $yellow-color;
+}
+li.init { 
+    cursor: pointer;
+    position: relative;
+    &:after {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+        font-size: 20px;
+        color: $grey-light;
+        font-family: 'Material-Design-Iconic-Font';
+        content: '\f2f2';
+    }
+}
+
+.label-radio {
+    display: block;
+    margin-bottom: 18px;
+}
+
+.vertify-booking {
+    color: $yellow-color;
+    font-size: 11px;
+    text-decoration: none;
+    margin-top: 14px;
+    display: block;
+    @include transition(all 0.3s);
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.select-list {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 47px;
+}
+.list-item {
+    position: absolute;
+    width: 100%;
+}
+#time {
+    z-index: 99;
+}
+#food {
+    z-index: 9;
+}

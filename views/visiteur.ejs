@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+    <body >
+  <div  class="text-center ">
+    <nav class="navbare">
+        <a class="URL" href="">homme</a>
+        <a class="URL" href="">Destination</a>
+        <a class="URL" href="">Service</a>
+        <a class="URL" href="">A propse</a>
+        <a class="URL" href="">Contenu</a>
+        <a class="URL" href="/logine">connexion</a>
+        <a class="logo">Hôtel</a>
+     </nav>
+    <img class="image"  src="/about_1.jpg" width="100%" height="822vh">
+     <p class="p">Trouvez l'hôtel de vos rêves dès aujourd'hui</p>
+    <form action="" class="caranderire shadow p-4 rounded">
+      <div><label class="form-label label1">Date Arrival</label>
+        <input  placeholder="Date Arrivale" class="form-control control" type="date"></div>
+      <div><label class="form-label label1">Date Departe</label>
+        <input  placeholder="Date Departe" class="form-control control" type="date"></div>
+      <div><label class="form-label label2">Nbr De Presonne</label>
+        <input type="number" class="form-control control1"> </div>
+      <button class=" btn1">Trouve maintenant</button>
+    </form>
+    <div >
+      <div class="tree"><hr class="hr1"><p class="pp">Les Chambres Disponibles</p><hr  class="hr1"></div>
+      </div>
+        <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+     <% result.forEach(result=> { %>
+       <div class="swiper-slide"> 
+        <div class="card border-0 shadow" style="width: 22rem;">
+                <img src="<%= result.image_url %>" class="card-img-top" style="height: 185px;" alt="...">
+                <div class="card-body " style="height: 395px; background-color: rgba(179, 179, 179, 0.315);">
+                  <h5 class="card-title"><%= result.name%></h5>
+                  <p class="card-text">prix <%= result.prix%>$</p>
+                  <div class="">
+                    <h6 class="card-title">Caractestiques</h6>
+                  <div class="d-flex gap-1"><p>2Chambre</p>
+                  <p>1Bearthday</p>
+                  <p>1Balacony</p>
+                  <p>3Canape</p></div>
+                  </div>
+                  <div class="">
+                    <h6 class="card-title">Faclites</h6>
+                  <div class="d-flex gap-2"><p>2 wifi</p>
+                  <p>television</p>
+                  <p>Chambre heater</p></div>
+                  </div>
+                   <div class="d-flex mb1">
+                              </div>
+                  <div class="">
+                    <h6 class="card-title ">Notation</h6>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                  </div>
+                  <div class="d-flex justify-content-between justify-content-center  align-items-center">
+                    <% if (result.status=='Disponible') { %>
+                     <form action="/select-chambre" method="post">
+                      <input type="hidden" name="chambresId" value="<%= result.id %>" >
+                      <button type="submit" class="btn btn-outline-success">Reserver</button>
+                    </form>
+                    <% } %>
+                    <div class="d-flex gap-2 align-items-center" ><h6 class="mt-2">statu:</h6><%= result.status %></div>
+                  </div>
+                </div>
+                
+        </div>
+              </div>
+ 
+     <% }) %>
+      
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+      
+      <%- include('footer') %>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script src="swiper.js"></script>
+   <script src="bootstrap.min.js"></script>
+   <script src="jquery.min.js"></script>
+   <script src="popper.min.js"></script>
+    </body>
+</html>

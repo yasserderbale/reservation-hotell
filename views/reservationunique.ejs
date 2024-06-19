@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liste des Réservations</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <style>
+      /* Styles supplémentaires pour la barre de navigation */
+      body {
+        background-color: #4a4c4f; /* Couleur de fond du body */
+        color: #f8f9fa; /* Couleur du texte */
+        font-family: "Arial", sans-serif; /* Police personnalisée */
+      }
+      .navbar-custom {
+        background-color: #0062cc; /* Couleur de fond de la barre de navigation */
+      }
+      .navbar-brand {
+        color: #ffc107; /* Couleur du titre */
+        font-size: 2rem; /* Taille de la police */
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+      .navbar-brand:hover {
+        color: #fff; /* Couleur du titre au survol */
+        transform: scale(1.1); /* Agrandir au survol */
+      }
+      .fade-in {
+        animation: fadeIn 2s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px); /* Déplacement de 10px vers le haut */
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0); /* Position finale */
+        }
+      }
+
+      /* Styles pour la table */
+      .table-container {
+        margin: 20px auto;
+        width: 90%;
+        background-color: #676767; /* Couleur de fond rappelant le ciel clair */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .btn-annuler {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: all 0.3s ease; /* Transition douce pour le survol */
+      }
+      .btn-annuler:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+        transform: scale(1.05); /* Légère augmentation de taille au survol */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <a class="navbar-brand mx-auto fade-in" href="#"
+          >Liste De Réservations</a
+        >
+      </div>
+    </nav>
+
+    <div class="table-container">
+      <div class="table-container">
+        <table class="table table-dark table-hover text-center">
+          <thead class="thead-light">
+            <tr>
+              <th>id</th>
+              <th>prenom</th>
+              <th>Nom</th>
+              <th>Emaile</th>
+              <th>Nbr_De_Personne</th>
+              <th>date_arrivee</th>
+              <th>date_departe</th>
+              <th>Nome_Chambre</th>
+              <th>statu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% array.forEach(user => { %>
+            <tr>
+              <td><%= user.user_id %></td>
+              <td><%= user.prenom %></td>
+              <td><%= user.Nom %></td>
+              <td><%= user.Emaile %></td>
+              <td><%= user.Nbr_of_Presonne %></td>
+              <td><%= user.date_arrivee %></td>
+              <td><%= user.date_depart %></td>
+              <td><%= user.name %></td>
+              <td>
+                <form action="/annuler-reservations" method="post">
+                  <input type="hidden" name="id" value="<%= user.id %>" />
+                  <button type="submit" class="btn btn-annuler">Annuler</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+  </body>
+</html>

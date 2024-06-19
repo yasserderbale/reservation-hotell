@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Professionnelle</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      /* Custom CSS */
+      /* Styling for the header */
+      header {
+        background-color: #4caf50; /* Couleur de fond verte */
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        margin-bottom: 30px; /* Marge inférieure pour séparer le titre du reste du contenu */
+      }
+
+      /* Styling for the Navbar */
+      .navbar {
+        background-color: #333; /* Couleur de fond du Navbar */
+      }
+
+      .navbar-brand {
+        color: #fff !important; /* Couleur du texte du titre de la Navbar */
+        font-size: 24px; /* Taille de police du titre */
+      }
+
+      /* Styling for the main content */
+      body {
+        background-color: #f2f2f200; /* Couleur de fond du corps */
+        color: #333; /* Couleur du texte principal */
+      }
+
+      /* Styling for the reservation table */
+      #reservationTable th {
+        background-color: #4caf50; /* Couleur de fond de l'en-tête de la table */
+        color: #fff; /* Couleur du texte de l'en-tête de la table */
+      }
+
+      #reservationTable tbody tr:hover {
+        background-color: #ddd; /* Couleur de fond lors du survol sur une ligne */
+      }
+
+      /* Centrer le titre */
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="animate__animated animate__fadeInDown">
+      <h1>Bienvenue sur notre Page Reservations Clientes</h1>
+    </header>
+
+    <div class="container animate__animated animate__fadeIn">
+      <h2>Liste des Reservation</h2>
+      <table
+        id="reservationTable"
+        class="table table-striped table-bordered text-center"
+      >
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>prenom</th>
+            <th>Nom</th>
+            <th>Emaile</th>
+            <th>Nbr-personne</th>
+            <th>date_ariivee</th>
+            <th>date_departe</th>
+            <th>Nome_Chambre</th>
+            <th>prix</th>
+            <th> image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% result1.forEach(result1 => { %>
+          <tr>
+            <td><%= result1.user_id %></td>
+            <td><%= result1.prenom %></td>
+            <td><%= result1.Nom %></td>
+            <td><%= result1.Emaile %></td>
+            <td><%= result1.Nbr_of_Presonne %></td>
+            <td><%= result1.date_arrivee %></td>
+            <td><%= result1.date_depart %></td>
+            <td><%= result1.name %></td>
+            <td><%= result1.prix %>$</td>
+            <td>
+              <img src="<%= result1.image_url %> " width="120%" height="105vh" />
+            </td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Fonction pour déclencher les animations lorsqu'un élément entre en vue
+      function animateOnScroll() {
+        var elements = document.querySelectorAll(".animate__animated");
+        elements.forEach(function (element) {
+          var animation = element.dataset.animation || "fadeIn"; // Animation par défaut
+          var offset = element.dataset.offset || "50"; // Offset de déclenchement
+
+          // Fonction pour vérifier si l'élément est visible à l'écran
+          function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+              rect.top >= 0 - parseInt(offset) &&
+              rect.left >= 0 &&
+              rect.bottom <=
+                (window.innerHeight || document.documentElement.clientHeight) +
+                  parseInt(offset) &&
+              rect.right <=
+                (window.innerWidth || document.documentElement.clientWidth)
+            );
+          }
+
+          // Fonction pour déclencher l'animation lorsque l'élément entre en vue
+          function checkAnimation() {
+            if (isElementInViewport(element)) {
+              element.classList.add("animate__" + animation);
+            } else {
+              element.classList.remove("animate__" + animation);
+            }
+          }
+
+          // Vérifier l'animation lorsque la page est chargée et défile
+          window.addEventListener("load", checkAnimation);
+          window.addEventListener("scroll", checkAnimation);
+        });
+      }
+
+      // Appeler la fonction pour déclencher les animations sur le scroll
+      animateOnScroll();
+    </script>
+  </body>
+</html>

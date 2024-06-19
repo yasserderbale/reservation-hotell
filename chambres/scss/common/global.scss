@@ -1,0 +1,46 @@
+a:focus, a:active { text-decoration: none; outline: none; @include transition(all 300ms ease 0s); }
+input, select, textarea { outline: none; @include appearance( unset ); }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    @include appearance( none );
+    margin: 0;
+}
+input:focus, select:focus, textarea:focus { outline: none; @include box-shadow-input(none); }
+input[type=checkbox] { @include appearance( checkbox ); }
+input[type=radio] { @include appearance( radio ); }
+img { max-width: 100% }
+figure { margin: 0; }
+p { margin-bottom: 0px; }
+h2 { 
+    line-height: 1.8; 
+    margin: 0; 
+    padding: 0;
+    font-weight: bold; 
+    color: #fff;
+    font-family: Poppins;
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+.clear { clear: both; }
+body {
+	font-size: 14px;
+    line-height: 1.8;
+    color: #fff;
+    background: $body-bg;
+    font-weight: 400;
+    font-family: Poppins;
+    margin: 0px;
+    // padding: 150px 0;
+}
+.main {
+    padding: 115px 0;
+    position: relative;
+}
+.container {
+    width: 1150px;
+    background: #fff;
+    margin: 0 auto;
+    @include box-shadow(0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05));
+    @include border-radius(10px);
+}
+
