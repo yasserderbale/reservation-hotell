@@ -40,14 +40,15 @@ button {
 }
 
 .p {
-  width: 70%;
-  top: 51%;
-  left: 50%;
-  translate: -50% -50%;
-  position: absolute;
-  color: white;
-  font-size: 53px;
-  font-weight: 900;
+  width: 80%;
+    top: 51%;
+    left: 50%;
+    translate: -50% -50%;
+    position: absolute;
+    color: #e9ecef;
+    font-size: 45px;
+    font-weight: bold;
+    letter-spacing: 5px;
 }
 .navbare {
   z-index: 1;
@@ -105,10 +106,11 @@ button {
 }
 
 .pp {
-  width: 27%;
-  font-size: 23px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 300;
+  width: 55%;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 .col {
   margin-right: 12px;
@@ -132,7 +134,7 @@ a {
   justify-content: center;
   width: 90%;
   position: absolute;
-  top: 94%;
+  top: 95%;
   left: 50%;
   translate: -50%;
   background-color: rgb(255, 253, 253);
@@ -177,13 +179,14 @@ a {
     }
 
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 64px;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 64px;
+    margin-top: 16px;
     }
 
     .swiper-slide img {
@@ -191,4 +194,4 @@ a {
       width: 100%;
       height: 100%;
     }
-    
+  
