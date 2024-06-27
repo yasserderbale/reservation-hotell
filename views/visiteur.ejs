@@ -70,13 +70,11 @@
                     </svg>
                   </div>
                   <div class="d-flex justify-content-between justify-content-center  align-items-center">
-                    <% if (result.status=='Disponible') { %>
+                    
                      <form action="/select-chambre" method="post">
                       <input type="hidden" name="chambresId" value="<%= result.id %>" >
                       <button type="submit" class="btn btn-outline-success">Reserver</button>
                     </form>
-                    <% } %>
-                    <div class="d-flex gap-2 align-items-center" ><h6 class="mt-2">statu:</h6><%= result.status %></div>
                   </div>
                 </div>
                 
