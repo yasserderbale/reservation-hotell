@@ -44,9 +44,10 @@ body {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 17px 25px;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 35px;
   }
   
   button:hover {
@@ -74,7 +75,7 @@ body {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 30px;
     border-radius: 5px;
     cursor: pointer;
   }
