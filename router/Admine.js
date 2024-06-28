@@ -43,6 +43,7 @@ router.get("/Admine-update:id", (req, res) => {
     res.redirect("/Admine-logine");
   }
 });
+
 router.get("/Admine-chambres", (req, res) => {
   const reuqute = `select * from chambres`;
   if (req.session.AdminId) {
@@ -64,6 +65,7 @@ router.get("/Admine-logine", (req, res) => {
     admineerore: req.flash("Admineeroore"),
   });
 });
+
 router.get("/Admine", (req, res) => {
   req.flash("eroore", "Il Faut Connecter");
   if (req.session.AdminId) {

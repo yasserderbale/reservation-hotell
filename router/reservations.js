@@ -14,9 +14,39 @@ router.use(express.static("chambres"));
 router.use(express.urlencoded({ extended: true }));
 router.use(flash());
 const connect = require("../model/model");
+router.get("/avis", (req, res) => {
+  const requte =
+    "SELECT s.*, a.* FROM sign AS s JOIN avis AS a ON s.id = a.IDVisiteur";
+  connect.query(requte, (er, resulta) => {
+    if (!er) {
+      res.render("avis", { resulta: resulta });
+    }
+  });
+});
+router.get("/Service", (req, res) => {
+  if (!req.session.userId) {
+    req.flash("connecter", "il faut connecter");
+    res.redirect("/");
+  } else {
+    res.render("Service", {
+      comment: req.flash("comment"),
+      
+    });
+  }
+});
+router.post("/Service", (req, res) => {
+  const avis = req.body.avis;
+  const user = req.session.userId;
+  const requet = `INSERT INTO avis (IDVisiteur,commentaire)VALUES ('${user}','${avis}')`;
+  connect.query(requet, (erore, result) => {
+    if (!erore) {
+      req.flash("comment", "votre commentaire enregistrer");
+      res.redirect("/Service");
+    }
+  });
+});
 router.get("/reservations", (req, res) => {
   const user = req.session.userId;
-  const receptioniste = req.session.ReceptionId;
   if (!req.session.userId) {
     req.flash("user", "il faute connecter");
     res.redirect("/logine");
@@ -87,7 +117,7 @@ router.post("/receptioniste-logine", (req, res) => {
     if (!eroore) {
       if (result.length != 0) {
         req.session.ReceptionId = result[0].passsworde;
-        res.send("sisire est valide");
+        res.redirect("/");
       } else {
         req.flash("false", "Email ou passworde est pas valide");
         res.redirect("/receptioniste-logine");

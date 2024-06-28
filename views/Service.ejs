@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services de l'Hôtel</title>
+    <link rel="stylesheet" href="ServiceCss.css" />
+  </head>
+
+  <body>
+    <% if (comment.length>0) { %>
+    <div
+      style="width: 100%; margin-left: 31%; font-size: 22px; font-weight: 600"
+      class="alert alert-info text-center vali flash-message"
+    >
+      <%= comment %>
+    </div>
+
+    <% } %>
+    <header>
+      <h1>Nos Services</h1>
+    </header>
+    <main>
+      <section class="service">
+        <h2>Service de chambre</h2>
+        <p>
+          Disponible 24h/24, avec un menu varié pour les repas et les boissons.
+        </p>
+        <img src="img/food-service.png" alt="Service de chambre" />
+        <button>Réserver maintenant</button>
+      </section>
+      <section class="service">
+        <h2>Wi-Fi gratuit</h2>
+        <p>
+          Accès Internet haut débit disponible dans toutes les chambres et les
+          espaces communs.
+        </p>
+        <img src="img/wifi.png" alt="Wi-Fi gratuit" />
+      </section>
+      <section class="service">
+        <h2>Petit-déjeuner inclus</h2>
+        <p>Un petit-déjeuner continental est servi chaque matin de 6h à 10h.</p>
+        <img src="img/fast-food.png" alt="Petit-déjeuner inclus" />
+      </section>
+      <section class="service">
+        <h2>Salle de sport</h2>
+        <p>
+          Notre salle de sport est équipée des dernières machines et est
+          accessible 24h/24.
+        </p>
+        <img src="img/sport.png" alt="Salle de sport" />
+      </section>
+      <section class="service">
+        <h2>Piscine</h2>
+        <p>
+          Ouverte de 6h00 à 22h00. Profitez de notre piscine chauffée et de
+          notre jacuzzi.
+        </p>
+        <img src="img/swimming-pool.png" alt="Piscine" />
+      </section>
+      <section class="service">
+        <h2>Service de blanchisserie</h2>
+        <p>Tarif selon les articles (chemise : 5$, pantalon : 7$, etc.).</p>
+        <img src="img/laundry-machine.png" alt="Service de blanchisserie" />
+      </section>
+      <section class="service">
+        <h2>Service de conciergerie</h2>
+        <p>
+          Disponible pour répondre à toutes vos demandes et organiser vos
+          activités.
+        </p>
+        <img src="img/receptionist.png" alt="Service de conciergerie" />
+      </section>
+      <section class="reviews">
+        <h2>Avis et Notes</h2>
+        <p>Laissez vos avis et notes sur nos services ci-dessous :</p>
+        <form method="post" action="/Service">
+          <textarea name="avis" placeholder="Votre avis" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </section>
+    </main>
+    <script src="flache.js"></script>
+  </body>
+</html>

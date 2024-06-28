@@ -7,7 +7,10 @@ router.get("/", (req, res) => {
     if (eroore) {
       res.send("eroore de recupere les chambres");
     } else {
-      res.render("visiteur", { result: result });
+      res.render("visiteur", {
+        connecter: req.flash("connecter"),
+        result: result,
+      });
     }
   });
 });

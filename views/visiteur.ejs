@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
     <body >
+      <% if (connecter.length>0) { %>
+        <div style="width: 40%; margin-left: 31% ; font-size: 22px ; font-weight: 600;  " class="alert alert-info text-center vali flash-message "><%= connecter %></div>       
+      <% } %>
   <div  class="text-center ">
     <nav class="navbare">
         <a class="URL" href="">homme</a>
         <a class="URL" href="">Avis</a>
-        <a class="URL" href="">Service</a>
+        <a class="URL" href="/Service">Service</a>
         <a class="URL" href="">A propse</a>
         <a class="URL" href="">Contenu</a>
         <a class="URL" href="/logine">connexion</a>
@@ -87,5 +90,7 @@
    <script src="bootstrap.min.js"></script>
    <script src="jquery.min.js"></script>
    <script src="popper.min.js"></script>
+   <script src="flache.js"></script>
+
     </body>
 </html>
