@@ -18,7 +18,7 @@ router.get("/utilisateur", (req, res) => {
     req.flash("user", "il faute connecter");
     res.redirect("/logine");
   } else {
-    const requte = `select r.*,s.prenom,s.Nom,s.Emaile,s.statu,c.name from sign as s join reservations as r on s.id=r.user_id join chambres as c on r.chambre_id=c.id where r.user_id='${user}'`;
+    const requte = `select r.*,s.prenom,s.Nom,s.Emaile,c.name from sign as s join reservations as r on s.id=r.user_id join chambres as c on r.chambre_id=c.id where r.user_id='${user}'`;
     connecte.query(requte, (er, result) => {
       if (er) {
         console.log("erore de recuperation de information de BDD");

@@ -15,7 +15,7 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.static("Admine"));
 router.get("/Admine-reservation", (req, res) => {
   if (req.session.AdminId) {
-    const requet = `select s.*, r.*,c.* from sign as s join reservations as r on s.id=r.user_id join chambres as c on c.id=r.chambre_id`;
+    const requet = `select r.*, s.prenom,s.Nom,s.Emaile,c.name,c.image_url,c.prix,c.IDHotel from sign as s join reservations as r on s.id=r.user_id join chambres as c on c.id=r.chambre_id`;
     connecte.query(requet, (erore, result) => {
       if (!erore) {
         console.log(result);
@@ -78,7 +78,7 @@ router.get("/receptioniste-logine", (req, res) => {
 router.get("/receptioniste", (req, res) => {
   if (req.session.ReceptionId) {
     res.render("receptioniste");
-  } else {
+  } else { res.send("ff")
     res.send("il faut connecter recotioniste");
   }
 });
@@ -170,7 +170,7 @@ router.post("/Admine-update", (req, res) => {
 });
 router.post("/accepter", (req, res) => {
   const accepter = req.body.accepter;
-  const requet = `update sign set statu ="Accepter" where id='${accepter}'`;
+  const requet = `update reservations set status ="Accepter" where id='${accepter}'`;
   connecte.query(requet, (eroore, result) => {
     if (!eroore) {
       req.flash("accepte", "acceptation valide");
@@ -182,7 +182,7 @@ router.post("/accepter", (req, res) => {
 });
 router.post("/refuser", (req, res) => {
   const refuser = req.body.refuser;
-  const requte = `update sign set statu="Refuser" where id='${refuser}'`;
+  const requte = `update reservations set status="Refuser" where id='${refuser}'`;
   connecte.query(requte, (er) => {
     if (!er) {
       req.flash("refuser", "refusion est valide");
