@@ -19,7 +19,11 @@ router.get("/Admine-reservation", (req, res) => {
     connecte.query(requet, (erore, result) => {
       if (!erore) {
         console.log(result);
-        res.render("Admine-reserve", { result1: result });
+        res.render("Admine-reserve", {
+          result1: result,
+          accepter: req.flash("accepte"),
+          refuser: req.flash("refuser"),
+        });
       }
     });
   } else {
@@ -67,6 +71,33 @@ router.get("/Admine", (req, res) => {
   } else {
     res.redirect("/Admine-logine");
   }
+});
+router.get("/receptioniste-logine", (req, res) => {
+  res.render("receptioniste-logine", { fals: req.flash("false") });
+});
+router.get("/receptioniste", (req, res) => {
+  if (req.session.ReceptionId) {
+    res.render("receptioniste");
+  } else {
+    res.send("il faut connecter recotioniste");
+  }
+});
+router.post("/receptioniste-logine", (req, res) => {
+  const emaile = req.body.email;
+  const passworde = req.body.password;
+  const requet = `select id,Email,passsworde from receptionniste where Email='${emaile}'and passsworde='${passworde}'`;
+  connecte.query(requet, (eroore, result) => {
+    if (!eroore) {
+      if (result.length != 0) {
+        req.session.ReceptionId = result[0].passsworde;
+        console.log(req.session.ReceptionId);
+        res.redirect("/receptioniste");
+      } else {
+        req.flash("false", "Email ou passworde est pas valide");
+        res.redirect("/receptioniste-logine");
+      }
+    }
+  });
 });
 router.post("/Admine-logine", (req, res) => {
   Emaile = req.body.email;
@@ -136,5 +167,27 @@ router.post("/Admine-update", (req, res) => {
     }
   });
   res.redirect("/Admine-chambres");
+});
+router.post("/accepter", (req, res) => {
+  const accepter = req.body.accepter;
+  const requet = `update sign set statu ="Accepter" where id='${accepter}'`;
+  connecte.query(requet, (eroore, result) => {
+    if (!eroore) {
+      req.flash("accepte", "acceptation valide");
+      res.redirect("Admine-reservation");
+    } else {
+      console.log("eroore de insertions");
+    }
+  });
+});
+router.post("/refuser", (req, res) => {
+  const refuser = req.body.refuser;
+  const requte = `update sign set statu="Refuser" where id='${refuser}'`;
+  connecte.query(requte, (er) => {
+    if (!er) {
+      req.flash("refuser", "refusion est valide");
+      res.redirect("Admine-reservation");
+    }
+  });
 });
 module.exports = router;

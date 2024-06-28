@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liste de reservation </title>
+    <title>Liste de reservation</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -67,7 +67,22 @@
     <header class="animate__animated animate__fadeInDown">
       <h1>Bienvenue sur notre Page Reservations Clientes</h1>
     </header>
-
+    <% if (accepter.length) { %>
+    <div
+      style="width: 40%; margin-left: 31%; font-size: 22px; font-weight: 600"
+      class="alert alert-info text-center vali flash-message"
+    >
+      <%= accepter %>
+    </div>
+    <% } %>
+    <% if (refuser.length>0) { %>
+     <div
+      style="width: 40%; margin-left: 31%; font-size: 22px; font-weight: 600"
+      class="alert alert-info text-center vali flash-message"
+    >
+      <%= refuser %>
+    </div>
+    <% } %>
     <div class="container animate__animated animate__fadeIn">
       <h2>Liste des Reservation</h2>
       <table
@@ -85,7 +100,8 @@
             <th>date_departe</th>
             <th>Nome_Chambre</th>
             <th>prix</th>
-            <th> image</th>
+            <th>image</th>
+            <th>statu</th>
           </tr>
         </thead>
         <tbody>
@@ -101,7 +117,29 @@
             <td><%= result1.name %></td>
             <td><%= result1.prix %>$</td>
             <td>
-              <img src="<%= result1.image_url %> " width="120%" height="105vh" />
+              <img
+                src="<%= result1.image_url %> "
+                width="120%"
+                height="105vh"
+              />
+            </td>
+            <td>
+              <form action="/accepter" method="post">
+                <input
+                  type="hidden"
+                  name="accepter"
+                  value="<%= result1.user_id %>"
+                />
+                <button type="submit" class="btn btn-primary">Accepter</button>
+              </form>
+              <form action="/refuser" method="post">
+                <input
+                  type="hidden"
+                  name="refuser"
+                  value="<%= result1.user_id %>"
+                />
+                <button type="submit" class="btn btn-dark">Refuser</button>
+              </form>
             </td>
           </tr>
 
@@ -155,5 +193,6 @@
       // Appeler la fonction pour déclencher les animations sur le scroll
       animateOnScroll();
     </script>
+    <script src="flache.js"></script>
   </body>
 </html>
