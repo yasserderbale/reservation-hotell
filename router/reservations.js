@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const router = express.Router();
+const connecte = require("../model/model");
 const flash = require("connect-flash");
 router.use(
   session({
@@ -15,7 +16,7 @@ router.use(flash());
 const connect = require("../model/model");
 router.get("/reservations", (req, res) => {
   const user = req.session.userId;
-  console.log(req.session.ReceptionId);
+  const receptioniste = req.session.ReceptionId;
   if (!req.session.userId) {
     req.flash("user", "il faute connecter");
     res.redirect("/logine");
@@ -50,7 +51,6 @@ router.post("/reservations", (req, res) => {
     res.redirect("/reservations");
   }
 });
-
 router.get("/reserved-dates", (req, res) => {
   const chambresId = req.session.chambresId;
   if (chambresId) {
@@ -76,5 +76,23 @@ router.get("/reserved-dates", (req, res) => {
     res.send("erore de recuperation de id chambres");
   }
 });
-
+router.get("/receptioniste-logine", (req, res) => {
+  res.render("receptioniste-logine", { fals: req.flash("false") });
+});
+router.post("/receptioniste-logine", (req, res) => {
+  const emaile = req.body.email;
+  const passworde = req.body.password;
+  const requet = `select id,Email,passsworde from receptionniste where Email='${emaile}'and passsworde='${passworde}'`;
+  connecte.query(requet, (eroore, result) => {
+    if (!eroore) {
+      if (result.length != 0) {
+        req.session.ReceptionId = result[0].passsworde;
+        res.send("sisire est valide");
+      } else {
+        req.flash("false", "Email ou passworde est pas valide");
+        res.redirect("/receptioniste-logine");
+      }
+    }
+  });
+});
 module.exports = router;
