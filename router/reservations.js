@@ -15,12 +15,12 @@ router.use(flash());
 const connect = require("../model/model");
 router.get("/reservations", (req, res) => {
   const user = req.session.userId;
+  console.log(req.session.ReceptionId);
   if (!req.session.userId) {
     req.flash("user", "il faute connecter");
     res.redirect("/logine");
   }
   res.render("reservations", {
-    user: user,
     ee: req.flash("e"),
     valide: req.flash("valide"),
   });
@@ -51,33 +51,30 @@ router.post("/reservations", (req, res) => {
   }
 });
 
-router.get('/reserved-dates',(req,res)=>{
-    const chambresId = req.session.chambresId;
-if(chambresId){
-  const query = `SELECT date_arrivee, date_depart FROM reservations WHERE chambre_id = ?`;
-  connect.query(query, [chambresId], (error, results) => {
-    if (error) {
-      return res
-        .status(500)
-        .send("Erreur lors de la récupération des dates réservées.");
-    }
-    const reservedDates = [];
-    results.forEach((row) => {
-      const currentDate = new Date(row.date_arrivee);
-      const endDate = new Date(row.date_depart);
-      while (currentDate <= endDate) {
-        reservedDates.push(currentDate.toISOString().split("T")[0]);
-        currentDate.setDate(currentDate.getDate() + 1);
+router.get("/reserved-dates", (req, res) => {
+  const chambresId = req.session.chambresId;
+  if (chambresId) {
+    const query = `SELECT date_arrivee, date_depart FROM reservations WHERE chambre_id = ?`;
+    connect.query(query, [chambresId], (error, results) => {
+      if (error) {
+        return res
+          .status(500)
+          .send("Erreur lors de la récupération des dates réservées.");
       }
+      const reservedDates = [];
+      results.forEach((row) => {
+        const currentDate = new Date(row.date_arrivee);
+        const endDate = new Date(row.date_depart);
+        while (currentDate <= endDate) {
+          reservedDates.push(currentDate.toISOString().split("T")[0]);
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+      });
+      res.json(reservedDates);
     });
-    res.json(reservedDates);
-  });
-}
-else{
-  res.send("erore de recuperation de id chambres")
-}
+  } else {
+    res.send("erore de recuperation de id chambres");
+  }
 });
-
-
 
 module.exports = router;

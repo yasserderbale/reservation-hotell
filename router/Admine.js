@@ -75,13 +75,6 @@ router.get("/Admine", (req, res) => {
 router.get("/receptioniste-logine", (req, res) => {
   res.render("receptioniste-logine", { fals: req.flash("false") });
 });
-router.get("/receptioniste", (req, res) => {
-  if (req.session.ReceptionId) {
-    res.render("receptioniste");
-  } else { res.send("ff")
-    res.send("il faut connecter recotioniste");
-  }
-});
 router.post("/receptioniste-logine", (req, res) => {
   const emaile = req.body.email;
   const passworde = req.body.password;
@@ -90,8 +83,7 @@ router.post("/receptioniste-logine", (req, res) => {
     if (!eroore) {
       if (result.length != 0) {
         req.session.ReceptionId = result[0].passsworde;
-        console.log(req.session.ReceptionId);
-        res.redirect("/receptioniste");
+        res.send("sisire est valide");
       } else {
         req.flash("false", "Email ou passworde est pas valide");
         res.redirect("/receptioniste-logine");
