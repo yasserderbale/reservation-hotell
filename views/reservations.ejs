@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="main">
+    <div class="main" style="background-color: #333333;">
       <% if (ee.length>0) { %>
       <div class="alert alert-danger text-center vali flash-message">
         <%= ee %>
@@ -64,12 +64,22 @@
       </div>
       <% } %>
       <form action="/logout" method="post" class="logoute">
-        <button type="submit" class="btn btn-danger btn">Deconnecter</button>
+        <button type="submit" class="btn btn-danger btn" style="    background: #edb77d;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;">Deconnecter</button>
       </form>
       <a
         href="/utilisateur"
         class="btn btn-danger"
-        style="position: absolute; left: -2px; top: 45px"
+        style="    position: absolute;
+    left: -2px;
+    top: 45px;
+    width: 130px;
+    background: #edb77d;
+    color: black;
+    font-size: 17px;
+    font-weight: 600;"
         >reservation</a
       >
       <div class="container">

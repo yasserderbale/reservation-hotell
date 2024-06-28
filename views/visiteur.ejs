@@ -12,7 +12,7 @@
   <div  class="text-center ">
     <nav class="navbare">
         <a class="URL" href="">homme</a>
-        <a class="URL" href="">Destination</a>
+        <a class="URL" href="">Avis</a>
         <a class="URL" href="">Service</a>
         <a class="URL" href="">A propse</a>
         <a class="URL" href="">Contenu</a>
@@ -21,15 +21,7 @@
      </nav>
     <img class="image"  src="/manuel-moreno-DGa0LQ0yDPc-unsplash.jpg" width="100%" height="822vh">
      <p class="p">Bienvenue dans le Luxe et le Confort</p>
-    <form action="" class="caranderire shadow p-4 rounded">
-      <div><label class="form-label label1">Date Arrival</label>
-        <input  placeholder="Date Arrivale" class="form-control control" type="date"></div>
-      <div><label class="form-label label1">Date Departe</label>
-        <input  placeholder="Date Departe" class="form-control control" type="date"></div>
-      <div><label class="form-label label2">Nbr De Presonne</label>
-        <input type="number" class="form-control control1"> </div>
-      <button class=" btn1">Trouve maintenant</button>
-    </form>
+    
     <div >
       <div class="tree"><hr class="hr1"><p class="pp">Les Chambres Disponibles</p><hr  class="hr1"></div>
       </div>
@@ -49,7 +41,7 @@
                   <p>1Balacony</p>
                   <p>3Canape</p></div>
                   </div>
-                  <div class="">
+                  <div classnode="">
                     <h6 class="card-title">Faclites</h6>
                   <div class="d-flex gap-2"><p>2 wifi</p>
                   <p>television</p>
@@ -70,13 +62,11 @@
                     </svg>
                   </div>
                   <div class="d-flex justify-content-between justify-content-center  align-items-center">
-                    <% if (result.status=='Disponible') { %>
+                    
                      <form action="/select-chambre" method="post">
                       <input type="hidden" name="chambresId" value="<%= result.id %>" >
                       <button type="submit" class="btn btn-outline-success">Reserver</button>
                     </form>
-                    <% } %>
-                    <div class="d-flex gap-2 align-items-center" ><h6 class="mt-2">statu:</h6><%= result.status %></div>
                   </div>
                 </div>
                 

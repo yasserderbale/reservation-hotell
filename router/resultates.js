@@ -18,35 +18,27 @@ router.get("/utilisateur", (req, res) => {
     req.flash("user", "il faute connecter");
     res.redirect("/logine");
   } else {
-    const requte = `select r.*,s.prenom,s.Nom,s.Emaile,c.name from sign as s join reservations as r on s.id=r.user_id join chambres as c on r.chambre_id=c.id where r.user_id='${user}'`;
+    const requte = `select r.*,s.prenom,s.Nom,s.Emaile,s.statu,c.name from sign as s join reservations as r on s.id=r.user_id join chambres as c on r.chambre_id=c.id where r.user_id='${user}'`;
     connecte.query(requte, (er, result) => {
       if (er) {
         console.log("erore de recuperation de information de BDD");
       } else {
         console.log(result);
-        res.render("reservationunique", { array: result });
+        res.render("reservationunique", {
+          array: result,
+          annuler_reserv: req.flash("annuler_reserv"),
+        });
       }
     });
   }
 });
 router.post("/annuler-reservations", (req, res) => {
   const id = req.body.id;
-  const chambreId = `select chambre_id from reservations where id='${id}'`;
-  connecte.query(chambreId, (er, result) => {
+  const annuler = `delete from reservations where id='${id}'`;
+  connecte.query(annuler, (er, resul) => {
     if (!er) {
-      const chambre_id = result[0].chambre_id;
-      const update = `update chambres set status='Disponible' where id='${chambre_id}'`;
-      connecte.query(update, (er, result) => {
-        if (!er) {
-          const annuler = `delete from reservations where id='${id}'`;
-          connecte.query(annuler, (er, resul) => {
-            if (!er) {
-              console.log("reservations anuler est succed");
-              res.redirect("/utilisateur");
-            }
-          });
-        }
-      });
+      req.flash("annuler_reserv", "reservations anuler est succed");
+      res.redirect("/utilisateur");
     }
   });
 });

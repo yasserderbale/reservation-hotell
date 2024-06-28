@@ -207,7 +207,7 @@ align-items: center;
 justify-content: center;
   font-size: 14px;
   color: #fff;
-  background: #ffd9b0;
+  background: #333333;;
   font-weight: 400;
   font-family: Poppins;
 }
@@ -395,7 +395,7 @@ input:-moz-placeholder {
 .submit {
   width: auto;
   background: #edb77d;
-  color: #fff;
+  color: black;
   padding: 15px 43px;
   font-weight: bold;
   border: none;
@@ -404,7 +404,9 @@ input:-moz-placeholder {
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  cursor: pointer; }
+  cursor: pointer; 
+letter-spacing: 1px;}
+  
   .submit:hover {
     background: #e79e50; }
 
