@@ -1,10 +1,13 @@
 const mysql =require('mysql')
-const connection =mysql.createConnection({
-    host:'localhost',
-    database:'signup',
-    user:'root',
-    password:''
-})
+const connection = mysql.createConnection({
+  host: "localhost",
+  database: "signup",
+  user: "root",
+  password: "yasser2003",
+  ssl: {
+    rejectUnauthorized: true,
+  },
+});
 connection.connect((err)=>{
     if(!err){
         console.log("connection on base de donnes est reussite")
