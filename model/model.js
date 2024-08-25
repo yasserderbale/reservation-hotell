@@ -4,9 +4,6 @@ const connection = mysql.createConnection({
   database: "signup",
   user: "root",
   password: "yasser2003",
-  ssl: {
-    rejectUnauthorized: true,
-  },
 });
 connection.connect((err)=>{
     if(!err){
