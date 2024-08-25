@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const porte = 12;
+const porte = 120;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.static("images"));
